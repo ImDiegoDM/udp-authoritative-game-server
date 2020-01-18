@@ -1,12 +1,6 @@
-import express from "express";
+import { Map } from './Map';
+import * as map_json from './map_1.json';
 
-const port = 3000;
-const server = express();
+const map = Map.CreateFromInterface(map_json);
 
-server.get("/", (_, res) => {
-  res.send("Hello World!");
-});
-
-server.listen(port,()=>{
-  console.log(`Server is listening on port ${port}!`);
-});
+console.log(map.objects[0].extend);
