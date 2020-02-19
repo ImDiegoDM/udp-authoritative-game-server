@@ -2,6 +2,8 @@ import { IVector3 } from "./IVector3";
 
 export class Vector3{
 
+  public static zero:Vector3 = new Vector3(0,0,0);
+
   constructor(
     public x:number,
     public y:number,

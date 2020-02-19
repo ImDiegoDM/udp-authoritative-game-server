@@ -5,11 +5,14 @@ export type MapObject = BoxObject
 
 export class Map{
   constructor(
-    public objects: MapObject[]
+    public objects: MapObject[],
+    public playersPositions: BoxObject[],
+    public playerLimit: number
   ){}
 
   public static CreateFromInterface(obj:IMap):Map{
     const mapObjs: MapObject[] = [];
+    const playersPositions: BoxObject[] = [];
 
     for (const mapObj of obj.objects) {
       switch (mapObj.type) {
@@ -19,6 +22,10 @@ export class Map{
       }
     }
 
-    return new Map(mapObjs);
+    for (const pPosition of obj.playersPositions) {
+      playersPositions.push(BoxObject.CreateFromInterface(pPosition))
+    }
+
+    return new Map(mapObjs,playersPositions,obj.playersPositions.length);
   }
 }
